@@ -1,0 +1,23 @@
+.container{
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+    min-height: 125px;
+}
+.map{
+    left: 50%;
+    margin-left: -50px;
+    position: absolute;
+    background-color: rgb(17, 124, 156);
+    width: 100px;
+    height: 100px;
+}
+.height{
+    position: absolute;
+    margin-left: 170px;
+    margin-top: 40px;
+}
+.width, .height {
+    text-align: center;
+    font-size: 10px;
+}
