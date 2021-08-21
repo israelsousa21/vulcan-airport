@@ -1,0 +1,13 @@
+/*
+    verde: #41D3BD
+    azul: #21247F
+*/
+.block{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width:  30px;
+    height: 30px;
+    border: 1px solid #fff;
+}

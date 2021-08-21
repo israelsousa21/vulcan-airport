@@ -1,45 +1,61 @@
-import { useState } from 'react'
-import styles from '../styles/Form.module.css'
-import Terrain from '../components/terrain'
+import { useState, useEffect } from 'react'
+import Form from '../components/form'
+import styles from '../styles/Index.module.css'
+import Sliceterrain from '../components/sliceterrain'
 
-export default function Form() {
-  const [width, setWidth]   = useState(10)
-  const [height, setHeight] = useState(10)
+export default function Home() {
+  const [situations, setSituations] = useState([])
+  
+  useEffect(()=>{
+    setSituations(createSituation(19,19, 4, 3))
+  })
+  
+  function createSituation(width, height, clouds, airports){
+    var x = []
 
-  function handlerWidth(){
-    
+    for (var wi = 1; wi <=width; wi++) {
+      x.push('cloud')
+      var p = []
+      for(var hi = 1; hi <= height; hi++){
+        p.push(x)
+      }
+   }
+    return p
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.section_image}>
-        <div className="card">
-          <div className="row g-2 p-4">
-            <h4>Dimensões do terreno</h4>
-            <div className="col-md-6 mb-3">
-              <label className="form-label">Largura</label>
-              <input type="number" className="form-control form-control-sm" value={width} onChange={e => setWidth(e.target.value)} />
-              <label className="form-label">Altura</label>
-              <input type="number" className="form-control form-control-sm" value={height} onChange={e => setHeight(e.target.value)} />
-            </div>
-            <div className={`col-md-6 mb-3`}>
-              <Terrain width={width} height={height} />
-            </div>
-          </div>
-          <div className="row g-2 p-4">
-            <h4>Dimensões do terreno</h4>
-            <div className="col-md-6 mb-3">
-              <label className="form-label">Quantidade de nuvens</label>
-              <input type="number" className="form-control form-control-sm" />
-              <label className="form-label">Quantidade de aeroportos</label>
-              <input type="number" className="form-control form-control-sm" />
-            </div>
-            <div className="col-md-6 mb-3">
-              
-            </div>
-          </div>
+    <div className={`container-xxl ${styles.section}`}>
+      <div className={styles.container}></div>
+      <div className={`row ${styles.content}`}>
+        <div className={`col-sm-2 ${styles.form}`}>
+          <Form />
         </div>
-        <button className="btn btn-primary mt-2">VISUALIZAR SITUAÇÃO</button>
+        <div className={`col-sm-10`}>
+          <div className={`row ${styles.terrain}`}>
+            <div className={`col-sm-12`}>
+              <h1>Situação da área</h1>
+              <div className={`row`}>
+                <div className={`col-sm-12 ${styles.map}`}>
+                  {situations.map(line => (
+                    <div className={`row`}>
+                      <div className={`col-sm-12`}>
+                        {line.map(col => (
+                          <Sliceterrain status={col} />
+                        ))}
+                      </div>
+                    </div>
+                  ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/*<div className={`row ${styles.status}`}>
+              [Status]
+              </div>*/
+          }
+        </div>
       </div>
     </div>
   )

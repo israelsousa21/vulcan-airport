@@ -1,0 +1,32 @@
+.container{
+    position: relative;
+    width: 100%;
+    min-height: 160px;
+}
+.map{
+    left: 50%;
+    margin-left: -80px;
+    position: absolute;
+    background-color: #41D3BD;
+    width: 160px;
+    height: 160px;
+}
+.width{
+    position: absolute;
+    margin-left: 72px;
+    margin-top: 10px;
+    z-index: 10;
+}
+.height{
+    position: absolute;
+    margin-left: 120px;
+    margin-top: 70px;
+}
+.width, .height {
+    text-align: center;
+    font-size: 10px;
+    color: #fff;
+}
+.alert{
+    background-color: brown;
+}
