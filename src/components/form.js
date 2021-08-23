@@ -104,7 +104,7 @@ export default function Form(props) {
             .then(response => response.json())
             .then(function(data){
                 //console.log(data.situation)
-                props.respData(data)
+                props.respData(data, {happen:true, elapseddays: 1, totalsmoke: clouds, affectedairports: 0})
             })
             .catch(error => console.log('error', error))
     }

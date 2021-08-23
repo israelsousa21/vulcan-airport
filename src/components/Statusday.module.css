@@ -6,6 +6,25 @@
 .toptitle{
     text-align: center;
 }
+.tablestatus{
+  margin: 0 4px 0 20px;
+  width: 175px;
+}
+.tableborder{
+  border: 2px solid #21247F;
+}
+.titletable{
+  color: #21247F;
+  font-size: 12px;
+  font-weight: bold;
+}
+.titletablestatus{
+  text-align: center;
+  background-color: #21247F;
+  color: #41D3BD;
+  font-size: 12px;
+  font-weight: bold;
+}
 .title{
     color: #21247F;
     font-size: 13px;

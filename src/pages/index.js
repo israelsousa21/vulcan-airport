@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import Form from '../components/form'
 import changeMap from '../services/changemap'
 import Statusday from '../components/statusday'
@@ -7,6 +8,7 @@ import Content from '../components/content'
 
 export default function Home() {
   const [situations, setSituations]       = useState(null)
+  const [status, setStatus]               = useState({})
   const [balloonstatus, setBalloonstatus] = useState({
     mensage: 'Uma vulcão acaba de entrar em erupção, provocando uma nuvem de cinzas que se alastra impedindo a circulação aérea. O governo está muito preocupado e deseja saber quando uma nuvem de cinzas irá atingir todos os aeroportos do país.',
     alert: false
@@ -16,14 +18,19 @@ export default function Home() {
     setBalloonstatus(balloonstatus)
   }, [balloonstatus])
 
-  function fecthSituation(data) {
+  function fecthSituation(data, status) {
     setSituations(data)
+    setStatus(status)
   }
 
   function nextDay() {
     const { day, airportshited, situation } = situations
-    const newSituation = changeMap(day, airportshited, situation)
+    const statusSituations = changeMap(day, airportshited, situation)
+    const newSituation = statusSituations[0]
+    const newStatus    = statusSituations[1]
     setSituations(newSituation)
+    console.log('Happen: '+newStatus.happen)
+    setStatus(newStatus)
   }
 
   function Teste(situations) {
@@ -41,6 +48,21 @@ export default function Home() {
         </div>
       )
     })
+  }
+
+  function nextButton(){
+    return <button onClick={nextDay} className={`${styles.btn_iouu}`}>DIA SEGUINTE</button>
+  }
+  function finishButton(){
+    return (
+            <>
+              <button onClick={restartSimulation} className={`${styles.btn_iouu}`}>FINALIZAR SIMULAÇÃO</button>
+            </>
+            )
+  }
+  function restartSimulation(){
+    setSituations(null)
+    setStatus({happen:true})
   }
 
   function showTerrain(situations) {
@@ -63,7 +85,7 @@ export default function Home() {
               </div>
               <div className={`row ${styles.days_buttons_container}`}>
                 <div className={`col-sm-12 ${styles.days_buttons_section}`}>
-                  <button onClick={nextDay} className={`${styles.btn_iouu}`}>Próximo dia</button>
+                  {status.happen ? nextButton() : finishButton()}
                 </div>
               </div>
             </div>
@@ -120,10 +142,11 @@ export default function Home() {
     )
   }
 
-  function showStatusDay() {
+  function showStatusDay(status) {
     return (
       <div className={`col-sm-2 ${styles.form}`}>
         <Statusday
+          status={status}
           situations={situations}
         />
       </div>
@@ -134,7 +157,7 @@ export default function Home() {
     <div className={`container-xxl ${styles.section}`}>
       <div className={styles.container}></div>
       <div className={`row ${styles.content}`}>
-        {situations ? showStatusDay() : showForm()}
+        {situations ? showStatusDay(status) : showForm()}
         {situations ? showTerrain(situations) : showInstrucions()}
       </div>
     </div>

@@ -4,6 +4,8 @@ export default function changeMap(actualDay, airportsHited, situation) {
     let hasAirport = false
     let clouds = []
     let totalAirportsHited = 0
+    let totalsmoke = 0
+    let happen = true
     if(parseInt(airportsHited) > 0){
       totalAirportsHited = parseInt(airportsHited)
     }
@@ -53,18 +55,24 @@ export default function changeMap(actualDay, airportsHited, situation) {
             case 'airport':
               newStatusSituation[row][col] = 'cloud-airport'
               totalAirportsHited++
-              console.log('Total: '+totalAirports+' Atingidos: '+totalAirportsHited)
               break
             case 'cloud-airport':
-              //totalAirportsHited++
               break
           }
         }
       })
     })
 
+    newStatusSituation.forEach((row, x) => {
+      row.forEach((col, y) => {
+        if (col == 'cloud' || col == 'cloud-airport') {
+          totalsmoke++
+        }
+      })
+    })
+
     let day = actualDay + 1
-    let mensage = ' a fumaça o vulcão está avançando!'
+    let mensage = ' a fumaça do vulcão está avançando!'
     if(totalAirportsHited == 1){
       mensage = totalAirportsHited+' aeroporto foi atigido pela fumaça!'
     }
@@ -72,11 +80,14 @@ export default function changeMap(actualDay, airportsHited, situation) {
       if(totalAirports != totalAirportsHited){
         mensage = totalAirportsHited+' aeroportos foram atigidos pela fumaça!'
       }else{
-        mensage = 'Todos os aeroportos serão atingidos pela fumaça!'
+        mensage = 'Todos os aeroportos foram atingidos pela fumaça!'
+        happen = false
       }
     }
     
-    return { day, airportsHited: totalAirportsHited, mensage, situation: newStatusSituation }
+    return [{ day, airportsHited: totalAirportsHited, mensage, situation: newStatusSituation },
+            {happen, elapseddays: day, totalsmoke, affectedairports: totalAirportsHited}
+           ]
 
     function getTopCell(row, column, grid) {
       let row_copy = grid[row - 1]
