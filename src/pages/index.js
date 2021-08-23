@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import Form from '../components/form'
 import changeMap from '../services/changemap'
 import Statusday from '../components/statusday'
@@ -10,12 +9,18 @@ export default function Home() {
   const [situations, setSituations]       = useState(null)
   const [status, setStatus]               = useState({})
   const [balloonstatus, setBalloonstatus] = useState({
-    mensage: 'Uma vulcão acaba de entrar em erupção, provocando uma nuvem de cinzas que se alastra impedindo a circulação aérea. O governo está muito preocupado e deseja saber quando uma nuvem de cinzas irá atingir todos os aeroportos do país.',
+  mensage: `Olá, eu sou Iouuvaldo, sou um autoridade de segurança em 
+              aeroportos, e esta é uma simulação de catastrófe de erupção vulcanica.
+              Uma vulcão acaba de entrar em erupção, provocando uma nuvem de cinzas que se 
+              alastra impedindo a circulação aérea. O governo está muito preocupado e deseja 
+              saber quando uma nuvem de cinzas irá atingir todos os aeroportos do país.
+              Entre com os dados ao lado para gerar uma simulação.`,
     alert: false
   })
 
   useEffect(() => {
     setBalloonstatus(balloonstatus)
+    //console.log('>>> '+balloonstatus.mensage)
   }, [balloonstatus])
 
   function fecthSituation(data, status) {
@@ -31,23 +36,6 @@ export default function Home() {
     setSituations(newSituation)
     console.log('Happen: '+newStatus.happen)
     setStatus(newStatus)
-  }
-
-  function Teste(situations) {
-    return situations.map((line, l) => {
-      return (
-        <div className={`row`}>
-          <div key={l.toString()} className={`col-sm-12`}>
-            {line.map((col, c) => (
-              <>
-                <span key={l + c.toString()}>{col}</span><br />
-              </>
-            ))
-            }
-          </div>
-        </div>
-      )
-    })
   }
 
   function nextButton(){
@@ -77,7 +65,6 @@ export default function Home() {
             </div>
             <div className={`row`}>
               <div className={`col-sm-12 ${styles.map}`}>
-                {/*Teste(situations.situation)*/}
                 {<Content
                   situations={situations.situation}
                 />}

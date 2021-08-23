@@ -3,84 +3,68 @@ import Terrain from '../components/terrain'
 import styles from './Form.module.css'
 
 export default function Form(props) {
-    var [width, setWidth]               = useState(10)
-    var [height, setHeight]             = useState(10)
-    var [clouds, setQuantityClouds]     = useState(4)
-    var [airports, setQuantityAirports] = useState(3)
-    const [validArea, setValidArea]     = useState(false)
-    var [textalert, setTextAlert]       = useState('')
-    const [showclouds, setClouds]       = useState('')
-    const [showairports, setAirports]   = useState('')
+    var   [width, setWidth]               = useState(10)
+    var   [height, setHeight]             = useState(10)
+    var   [clouds, setQuantityClouds]     = useState(4)
+    var   [airports, setQuantityAirports] = useState(3)
+    const [validArea, setValidArea]       = useState(false)
+    var   [textalert, setTextAlert]       = useState('')
+    const [showclouds, setClouds]         = useState('')
+    const [showairports, setAirports]     = useState('')
 
     useEffect(() => {
-        //const validatearea = validateArea(width, height)
-        const getStatus = validateForm(width, height, clouds, airports)
-        if(getStatus == false){
-            props.errorMensage({mensage:textalert, alert:true})
-        }else{
-            props.errorMensage({mensage:'Você está indo muito bem, as configurações estão Ok!', alert:false})
+        const formValidated = validateForm(width, height, clouds, airports)
+        updateAlerts(formValidated[1], formValidated[0])
+    }, [width, height, clouds, airports])
+    
+    function updateAlerts(textalert, status){
+        console.log('x>> '+status+ ' | Texto: '+textalert)
+        if (status == false) {
+            props.errorMensage({ mensage: textalert, alert: true })
+        } else {
+            props.errorMensage({ mensage: 'Você está indo muito bem, as configurações estão Ok!', alert: false })
         }
-    }, [width, height, clouds, airports, textalert])
-
-    // function validateArea(width, height) {
-    //     setTextAlert('')
-    //     if (width < 10 || height < 10) {
-    //         setValidArea(true)
-    //         if (width < 10) {
-    //             setTextAlert('A largura não pode ser menor do que 10 unidades')
-    //         } else {
-    //             setTextAlert('A altura não pode ser menor do que 10 unidades')
-    //         }
-    //         return false
-    //     } else {
-    //         setValidArea(false)
-    //         if (width % height != 0) {
-    //             setValidArea(true)
-    //             setTextAlert('A largura e altura não formam uma área retangular')
-    //             return false
-    //         }
-    //         return true
-    //     }
-    // }
+    }
 
     function validateForm(width, height, clouds, airports) {
+        var alertTxt = ''
         if (width < 10 || height < 10) {
             setValidArea(true)
             if (width < 10) {
-                setTextAlert('A largura não pode ser menor do que 10 unidades')
+                alertTxt = 'A largura não pode ser menor do que 10 unidades'
             } else {
-                setTextAlert('A altura não pode ser menor do que 10 unidades')
+                alertTxt = 'A altura não pode ser menor do que 10 unidades'
             }
-            return false
-        
+            return [false, alertTxt]
+
         } else {
             setValidArea(false)
             if (width % height != 0) {
                 setValidArea(true)
-                setTextAlert('A largura e altura não formam uma área retangular')
-                return false
+                alertTxt = 'A largura e altura não formam uma área retangular'
+                return [false, alertTxt]
             }
         }
 
         let showClouds = ''
         let showAirports = ''
         setTextAlert('')
-        if(clouds >= 4){
+        if (clouds >= 4) {
             for (var c = 1; c <= clouds; c++) {
                 showClouds = showClouds + '☁️'
             }
-        }else{
-            setTextAlert('A quantida de nuvens deve ser de no mínimo 4')
-            return false
+        } else {
+            alertTxt = 'A quantida de nuvens deve ser de no mínimo 4'
+            return [false, alertTxt]
         }
-        
-        if(airports >= 3){
+
+        if (airports >= 3) {
             for (var a = 1; a <= airports; a++) {
                 showAirports = showAirports + '✈️'
             }
-        }else{
-            setTextAlert('A quantida de aeorportos deve ser de no mínimo 3')
-            return false
+        } else {
+            alertTxt = 'A quantida de aeorportos deve ser de no mínimo 3'
+            return [false, alertTxt]
         }
         setClouds(showClouds)
         setAirports(showAirports)
@@ -91,7 +75,7 @@ export default function Form(props) {
         var myHeaders = new Headers()
         myHeaders.append("Content-Type", "application/json")
 
-        var raw = JSON.stringify({width,height,clouds,airports})
+        var raw = JSON.stringify({ width, height, clouds, airports })
 
         var requestOptions = {
             method: 'POST',
@@ -100,11 +84,10 @@ export default function Form(props) {
             redirect: 'follow'
         }
 
-        fetch("http://localhost:3000/api/situations", requestOptions)
+        fetch("/api/situations", requestOptions)
             .then(response => response.json())
-            .then(function(data){
-                //console.log(data.situation)
-                props.respData(data, {happen:true, elapseddays: 1, totalsmoke: clouds, affectedairports: 0})
+            .then(function (data) {
+                props.respData(data, { happen: true, elapseddays: 1, totalsmoke: clouds, affectedairports: 0 })
             })
             .catch(error => console.log('error', error))
     }
@@ -125,9 +108,9 @@ export default function Form(props) {
                 </div>
                 <div className="row g-2">
                     <div className="col-sm-12">
-                        <Terrain alert={validArea} 
-                                 width={width} 
-                                 height={height} 
+                        <Terrain alert={validArea}
+                            width={width}
+                            height={height}
                         />
                     </div>
                 </div>

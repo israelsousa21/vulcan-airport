@@ -123,7 +123,7 @@
 }
 .balloon > p{
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 .balloon_alert{
   background: #970f0f;
@@ -151,7 +151,7 @@
   font-size: 16px;
 }
 .agent{
-  width: 250px;
+  width: 210px;
 }
 .days_section{
   position: relative;
