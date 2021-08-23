@@ -5,7 +5,7 @@
   height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #000;
+  background-color: #111241;
 }
 .section .container {
   position: absolute;
@@ -23,6 +23,14 @@
   margin: 0;
   padding: 0;
 }
+.map{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: top;
+  justify-content: center; 
+  width: 100%;
+}
 .terrain{
   display: flex;
   flex-direction: column;
@@ -33,17 +41,155 @@
   height: 100vh;
   margin-top: 10px;
 }
-.map{
+.topbar_section{
   display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: top;
-  justify-content: center; 
-  height: 100vh;
-  width: 100%;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-top: -10px;
+}
+.topbar{
+  text-align: center;
+  width: 50%;
+  color: #fff;
+  background-color: #41D3BD;
+  border-bottom-left-radius: 5px; 
+  border-bottom-right-radius: 5px;
+}
+.topbar > h1{
+  font-size: 25px;
 }
 .status{
   background-color: rgb(136, 148, 148);
   width: 100%;
   height: 100px;
+}
+.instructions_section{
+  display: flex;
+  justify-content: center; 
+  height: 85vh;
+}
+.instructions{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px #000;
+  border: 5px #41D3BD solid;
+  background-color: #fff;
+  width: 90%;
+}
+.instructions_top{
+  width: 50%;
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  background-color: #41D3BD;
+}
+.instructions_top > h1{
+  color: #fff;
+  font-size: 24px;
+}
+.box_instructions{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 30px;
+  height: 460px;
+}
+.balloon{
+  background: #21247F;
+  border-radius: 15px;
+  width: 500px;
+  height: auto;
+  position: relative;
+  padding: 20px;
+  color: #41D3BD;
+}
+.balloon:after{
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #21247F;
+  bottom: -20px;
+  left: 20%;
+}
+.balloon > p{
+  font-weight: bold;
+  font-size: 16px;
+}
+.balloon_alert{
+  background: #970f0f;
+  border-radius: 15px;
+  width: 500px;
+  height: auto;
+  position: relative;
+  padding: 20px;
+  color: #41D3BD;
+}
+.balloon_alert:after{
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #970f0f;
+  bottom: -20px;
+  left: 20%;
+}
+.balloon_alert > p{
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+.agent{
+  width: 250px;
+}
+.days_section{
+  position: relative;
+  width: 90%;
+  padding: 10px;
+  height: 60px;
+  background-color: chocolate;
+}
+.days_buttons_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+}
+.days_buttons_section{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+}
+.days_buttons{
+  width: 20%;
+  background-color: forestgreen;
+}
+.btn_iouu{
+  min-width: 200px;
+  width: auto;
+  height: 50px;
+  font-weight: bold;
+  color: #41D3BD;
+  background-color: #21247F;
+  border: 3px solid #41D3BD;
+  border-radius: 5px;
+}
+.btn_iouu > :hover > :active{
+  background-color: #41D3BD;
+  border-color: #41D3BD;
+  color: #fff;
 }

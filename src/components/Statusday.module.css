@@ -1,0 +1,100 @@
+.container{
+    max-width: 100%;
+    border-radius: 5px;
+    margin: 10px 0 0 10px;
+}
+.toptitle{
+    text-align: center;
+}
+.title{
+    color: #21247F;
+    font-size: 13px;
+    font-weight: bold;
+}
+.label{
+    font-size: 13px;
+}
+.card {
+    max-width: 500px;
+    height: 90vh;
+}
+.btn_iouu{
+    width: 100%;
+    height: 50px;
+    font-weight: bold;
+    color: #41D3BD;
+    background-color: #21247F;
+    border-color: #21247F;
+}
+.btn_iouu > :hover > :active{
+    color: #21247F;
+    background-color: #41D3BD;
+    border-color: #41D3BD;
+    color: #fff;
+}
+.box_agent_container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 0;
+}
+.box_agent_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.balloon{
+    background: #21247F;
+    border-radius: 15px;
+    width: 180px;
+    height: auto;
+    position: relative;
+    padding: 10px;
+    color: #41D3BD;
+  }
+  .balloon:after{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #21247F;
+    bottom: -20px;
+    left: 20%;
+  }
+  .balloon > p{
+    font-weight: bold;
+    font-size: 11px;
+  }
+  .balloon_alert{
+    background: #970f0f;
+    border-radius: 15px;
+    width: 180px;
+    height: auto;
+    position: relative;
+    padding: 20px;
+    color: #41D3BD;
+  }
+  .balloon_alert:after{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #970f0f;
+    bottom: -20px;
+    left: 20%;
+  }
+  .balloon_alert > p{
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .agent{
+    margin-top: 20px;
+    width: 150px;
+  }

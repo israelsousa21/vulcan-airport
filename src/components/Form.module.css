@@ -3,7 +3,11 @@
     border-radius: 5px;
     margin: 10px 0 0 10px;
 }
+.toptitle{
+  text-align: center;
+}
 .title{
+    color: #21247F;
     font-size: 13px;
     font-weight: bold;
 }
@@ -24,4 +28,17 @@
     min-height: 30px;
     height: auto;
     margin-top: 5px;
+  }
+  .btn_iouu{
+    width: 100%;
+    height: 50px;
+    font-weight: bold;
+    color: #41D3BD;
+    background-color: #21247F;
+    border-color: #21247F;
+  }
+  .btn_iouu > :hover > :active{
+    color: #21247F;
+    background-color: #41D3BD;
+    border-color: #41D3BD;
   }
