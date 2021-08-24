@@ -1,5 +1,7 @@
 # DOJO Vulcão Aeroporto
 
+![Screenshot](https://israelsousa.com.br/extra/images/screenshot-dojo-vulcan.png)
+
 ## Desafio
 _Um vulcão acaba de entrar em erupção, provocando uma nuvem de cinzas que se alastra impedindo a circulação aérea. O governo está muito preocupado e deseja saber quando uma nuvem de cinzas irá atingir todos os aeroportos do país._
 
@@ -26,8 +28,8 @@ _Dado um quadriculado mínimo de 10 linhas e 10 colunas, além da indicação in
 - Como resultado ele deve receber um gráfico ou grid com o resultado do calculo.
 - A grid deve sempre iniciar com o numero de nuvens e aeroportos em posições aleatórias, lembrando que um aeroporto não pode iniciar com uma nuvem sobre ele.
 - Será aceito como correto os projetos que tenham as duas perguntas respondidas com base no calculo e na visualização na grid: 
-    > Quantos dias demorará para ao menos um aeroporto ficar coberto pelas nuvens?
-    > Daqui quantos dias todos os aeroportos estarão cobertos pelas nuvens?
+    - Quantos dias demorará para ao menos um aeroporto ficar coberto pelas nuvens?
+    - Daqui quantos dias todos os aeroportos estarão cobertos pelas nuvens?
 
 ## Desafio
 **Para funcionar, siga as instruções abaixo:**
@@ -40,9 +42,9 @@ npm run dev
 yarn dev
 ```
 
-Abra um dos links em seu navegador [http://localhost:3000](http://localhost:3000)
+ - Abra um dos links em seu navegador [http://localhost:3000](http://localhost:3000)
 
 ## Versão online
-Se preferir pode ver uma versão live no link abaixo:
+Se preferir pode ver uma versão live do resultado do projeto acesse o link abaixo:
 
-[Versão Online](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). 
+[https://dojovulcan.israelsousa.com.br](https://dojovulcan.israelsousa.com.br).
