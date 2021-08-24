@@ -21,15 +21,14 @@ _Dado um quadriculado mínimo de 10 linhas e 10 colunas, além da indicação in
 ### Premissa
 - FrontEnd deve ser desenvolvido em React JS (poderá ser utilizado o Next.JS).
 - Pode-se utilizar styles guides e design system existentes (bootstrap, antd...).
-- O projeto poderá ser enviado tanto como um projeto aberto no github de sua conta ou zipado para o e-mail do RH e em cópia o e-mail: prodrigues@iouu.com.br
 - Os dados do back-end pode ser simulado vindo de um arquivo mock .json ou da API caso utilize Next.JS
 - Os calculos devem ser realizados em um arquivo de serviço ou na camada de negócios na API caso utilize Next.JS
 - O cliente deve enviar os dados iniciais via frontend, sendo quantidade de aeroportos mínimo de 3, quantidade de nuvens mínimo de 4 nuvens, tamanho do terreno tendo no mínimo uma área de 10 x 10 linhas.
 - Como resultado ele deve receber um gráfico ou grid com o resultado do calculo.
 - A grid deve sempre iniciar com o numero de nuvens e aeroportos em posições aleatórias, lembrando que um aeroporto não pode iniciar com uma nuvem sobre ele.
 - Será aceito como correto os projetos que tenham as duas perguntas respondidas com base no calculo e na visualização na grid: 
-    - Quantos dias demorará para ao menos um aeroporto ficar coberto pelas nuvens?
-    - Daqui quantos dias todos os aeroportos estarão cobertos pelas nuvens?
+    > Quantos dias demorará para ao menos um aeroporto ficar coberto pelas nuvens?
+    > Daqui quantos dias todos os aeroportos estarão cobertos pelas nuvens?
 
 ## Desafio
 **Para funcionar, siga as instruções abaixo:**
@@ -42,9 +41,9 @@ npm run dev
 yarn dev
 ```
 
- - Abra um dos links em seu navegador [http://localhost:3000](http://localhost:3000)
+Abra um dos links em seu navegador [http://localhost:3000](http://localhost:3000)
 
 ## Versão online
-Se preferir pode ver uma versão live do resultado do projeto acesse o link abaixo:
+Se preferir pode ver uma versão live no link abaixo:
 
-[https://dojovulcan.israelsousa.com.br](https://dojovulcan.israelsousa.com.br).
+[Versão Online](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). 
